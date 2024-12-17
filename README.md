@@ -1,4 +1,4 @@
-# guia de instalacao do arch linux
+# Guia de instalacao do Arch Linux
 
 ## 1. configurando o relogio do sistema
 ```bash
