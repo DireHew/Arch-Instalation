@@ -176,4 +176,4 @@ pacman -S bspwm sxhkd polybar picom dunst nitrogen dmenu
 
 ---
 
-pronto! a partir daqui voce pode reiniciar o pc e entrar no seu novo arch linux.
+pronto! a partir daqui voce pode reiniciar o pc.
