@@ -1,18 +1,18 @@
 # Guia de instalacao do Arch Linux
 
-## 1. configurando o relogio do sistema
+## . configurando o relogio do sistema
 ```bash
 timedatectl set-ntp true
 ```
 * sincroniza o relogio com a internet.
 
-## 2. listando os discos
+## . listando os discos
 ```bash
 lsblk
 ```
 * mostra os discos e particoes disponiveis no pc.
 
-## 3. criando particoes
+## . criando particoes
 ```bash
 cfdisk /dev/sda
 ```
@@ -22,7 +22,7 @@ cfdisk /dev/sda
   - sda3: particao ext4 (para /home)
   - sda4: swap (memoria virtual)
 
-## 4. formatando as particoes
+## . formatando as particoes
 ```bash
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
@@ -34,7 +34,7 @@ mkswap /dev/sda4
   - ext4 para sistema e home.
   - swap para memoria virtual.
 
-## 5. montando as particoes
+## . montando as particoes
 ```bash
 mount /dev/sda2 /mnt
 mkdir /mnt/home/
@@ -46,32 +46,32 @@ swapon /dev/sda4
   - `/mnt/home` sera a pasta do usuario.
   - `swapon` ativa a particao swap.
 
-## 6. instalando o sistema base
+## . instalando o sistema base
 ```bash
 pacstrap /mnt base linux linux-firmware nano vim
 ```
 * instala o sistema basico, kernel linux, firmware e editores nano e vim.
 
-## 7. gerando o fstab
+## . gerando o fstab
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 * cria o arquivo fstab, que define como as particoes serao montadas no boot.
 
-## 8. entrando no sistema
+## . entrando no sistema
 ```bash
 arch-chroot /mnt
 ```
 * entra no ambiente do novo sistema instalado.
 
-## 9. configurando fuso horario
+## . configurando fuso horario
 ```bash
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc
 ```
 * ajusta o fuso horario para sao paulo e sincroniza o relogio.
 
-## 10. configurando o idioma
+## . configurando o idioma
 ```bash
 vim /etc/locale.gen
 ```
@@ -88,7 +88,7 @@ vim /etc/locale.conf
 LANG=en_US.UTF-8
 ```
 
-## 11. configurando o hostname
+## . configurando o hostname
 ```bash
 vim /etc/hostname
 ```
@@ -104,19 +104,19 @@ vim /etc/hosts
 127.0.1.1    NOMEDOPC.localdomain NOMEDOPC
 ```
 
-## 12. gerando a imagem do kernel
+## . gerando a imagem do kernel
 ```bash
 mkinitcpio -P
 ```
 * cria a imagem inicial do kernel.
 
-## 13. instalando pacotes essenciais
+## . instalando pacotes essenciais
 ```bash
 pacman -S grub base-devel efibootmgr os-prober mtools dosfstools linux-headers networkmanager nm-connection-editor pulseaudio pavucontrol dialog
 ```
 * instala grub (bootloader) e pacotes necessarios para o sistema.
 
-## 14. configurando o bootloader grub
+## . configurando o bootloader grub
 ```bash
 mkdir /boot/EFI
 mount /dev/sda1 /boot/EFI
@@ -125,13 +125,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 * instala o grub e cria o arquivo de configuracao.
 
-## 15. ativando o networkmanager
+## . ativando o networkmanager
 ```bash
 systemctl enable NetworkManager
 ```
 * ativa o gerenciador de rede.
 
-## 16. criando usuario e configurando sudo
+## . criando usuario e configurando sudo
 ```bash
 useradd -m -G wheel NOMEDOUSUARIO
 EDITOR=nano visudo
@@ -143,7 +143,7 @@ passwd NOMEDOUSUARIO
 ```
 * define senhas para root e usuario.
 
-## 17. instalando interface grafica
+## . instalando interface grafica
 ```bash
 pacman -S xorg lightdm lightdm-gtk-greeter
 systemctl enable lightdm
@@ -160,7 +160,7 @@ pacman -S xf86-video-amdgpu
 pacman -S nvidia nvidia-utils
 ```
 
-## 18. escolhendo o ambiente grafico
+## . escolhendo o ambiente grafico
 ### gnome:
 ```bash
 pacman -S gnome
