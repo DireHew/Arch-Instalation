@@ -169,11 +169,6 @@ pacman -S gnome
 ```bash
 pacman -S xfce4
 ```
-### minimalista (bspwm):
-```bash
-pacman -S bspwm sxhkd polybar picom dunst nitrogen dmenu
-```
-
 ---
 
 pronto! a partir daqui voce pode reiniciar o pc.
